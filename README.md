@@ -10,7 +10,22 @@
 ## Screenshots
 
 ### Admin Dashboard
-![Admin Dashboard](e-commerc-readme-images/dashboard.png)
+[Admin Dashboard](e-commerc-readme-images/dashboard.png)
+
+### Product Management
+
+[Product Management](e-commerc-readme-images/products.png)
+
+### Orders
+[Orders](e-commerc-readme-images/orders.png)
+
+
+### user-products
+[user-products](e-commerc-readme-images/user-products.png)
+
+### stripe-payment
+[stripe payment](e-commerc-readme-images/stripe.png)
+
 
 # Laravel E-Commerce System
 
