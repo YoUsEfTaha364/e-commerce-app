@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Billable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
  use Billable;
+  use HasApiTokens;
     /**
      * The attributes that are mass assignable.
      *
@@ -57,9 +59,10 @@ class User extends Authenticatable
         return false;
     }
 
-    public function cart(){
-        return $this->belongsTo(Cart::class);
-    }
+  public function cart()
+{
+    return $this->hasOne(Cart::class);
+}
      public function orders(){
         return $this->hasMany(Order::class);
     }

@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class CartService
 {
 
-    public function addItem($productId)
+    public function addItem($product)
     {
         $cart = Cart::firstOrCreate(["user_id" => Auth::user()->id], ["user_id" => Auth::user()->id]);
 
 
-        $cart_item = CartItem::where("product_id", $productId)->where("cart_id", $cart->id)->latest()->first();
+        $cart_item = CartItem::where("product_id", $product->id)->where("cart_id", $cart->id)->latest()->first();
 
 
         if ($cart_item) {
@@ -23,7 +23,7 @@ class CartService
         } else {
             CartItem::create([
                 "cart_id" => $cart->id,
-                "product_id" => $productId,
+                "product_id" => $product->id,
                 "quantity" => 1
             ]);
         }

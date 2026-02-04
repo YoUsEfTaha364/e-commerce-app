@@ -17,13 +17,6 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,7 +32,7 @@ Route::middleware('auth')->group(function () {
 
    Route::controller(FrontProductController::class)->group(function(){
       Route::get("/","index")->name("customer.home");
-      Route::get("products/show/{id}","show")->name("customer.products.show");
+      Route::get("products/show/{product}","show")->name("customer.products.show");
    });
 
 
@@ -60,7 +53,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/',  'index')->name('index');
-    Route::post("/store/{id}","store")->name("store");
+    Route::post("/store/{product}","store")->name("store");
 
     Route::post("/decrement/{id}","decrement")->name("decrement");
 
@@ -70,6 +63,8 @@ Route::middleware('auth')->group(function () {
     Route::delete("/deleteItem/{id}","delete")->name("delete");
 
    });
+
+   
 
 
 
@@ -129,10 +124,7 @@ Route::middleware('auth')->group(function () {
     });
 
      
-        // Route::get("/index","index")->name("index");
-        // Route::get("/create","create")->name("create");
-
-        // Route::post("/store","store")->name("store");
+       
     });
 
 

@@ -4,6 +4,7 @@ use App\Http\Middleware\AdminAuthorization;
 use App\Http\Middleware\check;
 use App\Http\Middleware\CustomAuth;
 use App\Http\Middleware\CustomGuest;
+use App\Http\Middleware\CustomSanctum;
 use App\Http\Middleware\guest;
 use Illuminate\Auth\Middleware\Authenticate;
 // use Illuminate\Auth\Middleware\guest;
@@ -18,6 +19,7 @@ use Ramsey\Uuid\Guid\Guid;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
+        api: __DIR__.'/../routes/api.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
         then: function(){
@@ -26,7 +28,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
-            "c-auth"=>CustomAuth::class,"c-guest"=>CustomGuest::class,"guest2"=>guest::class,"authorize-admin"=>AdminAuthorization::class,"check"=>check::class
+            "c-auth"=>CustomAuth::class,"c-guest"=>CustomGuest::class,"guest2"=>guest::class,"authorize-admin"=>AdminAuthorization::class,"check"=>check::class,"c-sanctum"=>CustomSanctum::class
         ]);
         
     })

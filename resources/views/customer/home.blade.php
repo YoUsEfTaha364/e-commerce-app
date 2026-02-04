@@ -9,70 +9,6 @@
 @section("main")
  <div class="grid grid-cols-1 lg:grid-cols-8 gap-6">
 
-            {{-- <aside class="lg:col-span-3 bg-white p-6 rounded-xl shadow-lg h-fit border border-gray-100">
-                <h3 class="text-lg font-bold text-gray-800 mb-4">Filters</h3>
-
-                <div class="mb-6 pb-4 border-b border-gray-100">
-                    <div class="flex justify-between items-center mb-2">
-                        <h4 class="font-semibold text-gray-700">Price Range</h4>
-                        <button class="text-xs text-gray-400 hover:text-purple-600">Reset</button>
-                    </div>
-                    <div class="bg-purple-50 p-4 rounded-lg h-32 flex items-center justify-center text-sm text-purple-700 font-medium">
-                        [Price Range Graph / Slider UI]
-                    </div>
-                    <div class="flex justify-between text-xs mt-2 text-gray-500">
-                        <span>$20</span>
-                        <span>$1130</span>
-                    </div>
-                    <p class="text-xs text-gray-400 mt-2">The average price is $300</p>
-                </div>
-
-                <div class="mb-6 pb-4 border-b border-gray-100">
-                    <h4 class="font-semibold text-gray-700 mb-2">Star Rating</h4>
-                    <div class="flex items-center space-x-2">
-                        <span class="text-yellow-400 text-lg">★★★★☆</span>
-                        <span class="text-sm text-gray-500">4 Stars & up</span>
-                    </div>
-                </div>
-
-                <div class="mb-6 pb-4 border-b border-gray-100">
-                    <div class="flex justify-between items-center mb-3">
-                        <h4 class="font-semibold text-gray-700">Brand</h4>
-                        <button class="text-xs text-gray-400 hover:text-purple-600">Reset</button>
-                    </div>
-                    <ul class="space-y-2 text-sm">
-                        <li class="flex justify-between items-center">
-                            <label class="flex items-center space-x-2 text-gray-600">
-                                <i class="fas fa-shoe-prints text-red-500"></i>
-                                <span>Adidas</span>
-                            </label>
-                            <input type="checkbox" checked class="rounded text-purple-600 focus:ring-purple-500">
-                        </li>
-                        <li class="flex justify-between items-center">
-                            <label class="flex items-center space-x-2 text-gray-600">
-                                <i class="fas fa-mountain text-blue-500"></i>
-                                <span>Columbia</span>
-                            </label>
-                            <input type="checkbox" checked class="rounded text-purple-600 focus:ring-purple-500">
-                        </li>
-                        <li class="flex justify-between items-center">
-                            <label class="flex items-center space-x-2 text-gray-600">
-                                <i class="fas fa-shoe-prints text-yellow-500"></i>
-                                <span>New Balance</span>
-                            </label>
-                            <input type="checkbox" checked class="rounded text-purple-600 focus:ring-purple-500">
-                        </li>
-                    </ul>
-                    <a href="#" class="text-xs text-purple-600 mt-3 block hover:underline">More Brand</a>
-                </div>
-
-                <div class="mb-0">
-                    <h4 class="font-semibold text-gray-700">Delivery Options</h4>
-                    <p class="text-xs text-gray-400 mt-1">[Other Filter Elements]</p>
-                </div>
-
-            </aside> --}}
-
             <section class="lg:col-span-9">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
@@ -116,7 +52,7 @@
         
         <!-- Product Name (Clickable) -->
         <a 
-            href="{{ route('customer.products.show', $product->id) }}" 
+            href="{{ route('customer.products.show', $product) }}" 
             class="block"
             aria-label="View {{ $product->name }}"
         >
@@ -132,7 +68,7 @@
             </span>
             <form 
                 method="post" 
-                action="{{ route('cart.store', $product->id) }}" 
+                action="{{ route('cart.store', $product) }}" 
                 class="inline"
               
             >
@@ -155,17 +91,8 @@
             </p>
         @endif
 
-        <!-- Optional: Rating stars if product has ratings -->
-        {{-- @if(isset($product->average_rating))
-            <div class="flex items-center mt-2">
-                <div class="flex text-yellow-400">
-                    @for($i = 1; $i <= 5; $i++)
-                        <i class="fas fa-star {{ $i <= $product->average_rating ? '' : 'text-gray-300' }}"></i>
-                    @endfor
-                </div>
-                <span class="text-sm text-gray-500 ml-2">({{ $product->reviews_count ?? 0 }})</span>
-            </div>
-        @endif --}}
+     
+  
 
     </div>
 

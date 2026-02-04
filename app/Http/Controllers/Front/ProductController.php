@@ -14,9 +14,9 @@ class ProductController extends Controller
         $products=Product::where("status","active")->get();
         return view("customer.home",compact("products"));
     }
-     public function show($id)
+     public function show(Product $product)
     {
-        $product=Product::find($id);
+       
         return view("customer.products.show",compact("product"));
     }
 

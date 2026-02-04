@@ -14,8 +14,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('products/export/test', [ProductController::class, 'testExport'])
-    ->name('products.export.test');
+
 
 
 Route::get("dashboard",DashboardController::class)->middleware("c-auth")->name("dashboard");
@@ -34,10 +33,10 @@ Route::post("/filter","filter")->name("filter");
 
 
 
-   Route::resource("products",ProductController::class);
+   Route::middleware("c-auth")->resource("products",ProductController::class);
 
    
-Route::post('products/{product}/change-status', [ProductController::class, 'change_status'])
+Route::middleware("c-auth")->post('products/{product}/change-status', [ProductController::class, 'change_status'])
     ->name('products.change-status');
 
 

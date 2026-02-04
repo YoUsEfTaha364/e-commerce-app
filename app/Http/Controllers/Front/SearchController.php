@@ -17,6 +17,7 @@ class SearchController extends Controller
         return view("customer.search.index",compact("products"));
     }
       public function getSuggestions(Request $request,ProductSearchService $search){
+        
 
         return $search->baseSearchQuery($request->q)->limit(10)->get();
 

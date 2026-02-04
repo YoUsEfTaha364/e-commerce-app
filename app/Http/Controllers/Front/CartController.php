@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\CartItem;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Services\CartService;
@@ -19,10 +20,10 @@ class CartController extends Controller
 
     }
 
-    public function store($id,CartService $addProduct){
+    public function store(Product $product,CartService $addProduct){
 
 
-         $addProduct->addItem($id);
+         $addProduct->addItem($product);
 
          return redirect()->route("cart.index");
 
