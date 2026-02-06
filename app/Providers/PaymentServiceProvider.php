@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Interfaces\PaymentGatewayInterface;
-use App\Services\PaymobPaymentService;
+use App\Services\apis\PaymobPaymentService;
 use Illuminate\Support\ServiceProvider;
 
 class PaymentServiceProvider extends ServiceProvider

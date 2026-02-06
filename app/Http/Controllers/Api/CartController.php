@@ -29,7 +29,8 @@ class CartController extends Controller
         }
 
         $data = [
-            "cart" => $cart
+            "items" => $cart->cart_items
+            
             
         ];
 

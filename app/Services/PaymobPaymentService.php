@@ -108,7 +108,7 @@ $address = Address::findOrFail($addressId);
         $data["integrations"]=$this->integrations_id; 
         $data["items"]=$items; 
         $data["delivery_needed"]= false;
-
+        
         // dd($data);
 
 
