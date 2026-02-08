@@ -6,6 +6,7 @@ use App\Http\Middleware\CustomAuth;
 use App\Http\Middleware\CustomGuest;
 use App\Http\Middleware\CustomSanctum;
 use App\Http\Middleware\guest;
+use App\Http\Middleware\IsAdminMiddleware;
 use Illuminate\Auth\Middleware\Authenticate;
 // use Illuminate\Auth\Middleware\guest;
 use Illuminate\Foundation\Application;
@@ -28,7 +29,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
-            "c-auth"=>CustomAuth::class,"c-guest"=>CustomGuest::class,"guest2"=>guest::class,"authorize-admin"=>AdminAuthorization::class,"check"=>check::class,"c-sanctum"=>CustomSanctum::class
+            "c-auth"=>CustomAuth::class,"c-guest"=>CustomGuest::class,"guest2"=>guest::class,"authorize-admin"=>AdminAuthorization::class,"check"=>check::class,"c-sanctum"=>CustomSanctum::class,"is-admin"=>IsAdminMiddleware::class
         ]);
         
     })
