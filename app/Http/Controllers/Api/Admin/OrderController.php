@@ -6,9 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Services\api_response;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\Middleware;
 
+use Illuminate\Routing\Controllers\HasMiddleware;
 class OrderController extends Controller
 {
+
+        public static function middleware(): array
+    {
+        return [
+            "c-sanctum:sanctum",
+            "is-admin",
+
+            new Middleware("authorize-api:orders.update_status,orders.view,orders.cancel"),
+        ];
+    }
       public function index()
     {
         $orders = Order::with([

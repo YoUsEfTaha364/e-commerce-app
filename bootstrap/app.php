@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AdminAuthorization;
+use App\Http\Middleware\ApiAuthorizationMiddleware;
 use App\Http\Middleware\check;
 use App\Http\Middleware\CustomAuth;
 use App\Http\Middleware\CustomGuest;
@@ -29,7 +30,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
-            "c-auth"=>CustomAuth::class,"c-guest"=>CustomGuest::class,"guest2"=>guest::class,"authorize-admin"=>AdminAuthorization::class,"check"=>check::class,"c-sanctum"=>CustomSanctum::class,"is-admin"=>IsAdminMiddleware::class
+            "c-auth"=>CustomAuth::class,"c-guest"=>CustomGuest::class,"guest2"=>guest::class,"authorize-admin"=>AdminAuthorization::class,"check"=>check::class,"c-sanctum"=>CustomSanctum::class,"is-admin"=>IsAdminMiddleware::class,"authorize-api"=>ApiAuthorizationMiddleware::class
         ]);
         
     })

@@ -11,9 +11,21 @@ use App\Services\api_response;
 use App\Services\FileService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Routing\Controllers\Middleware;
 
+use Illuminate\Routing\Controllers\HasMiddleware;
 class ProductController extends Controller
 {
+
+        public static function middleware(): array
+    {
+        return [
+            "c-sanctum:sanctum",
+            "is-admin",
+
+            new Middleware("authorize-api:products.create,products.edit,products.view,products.delete"),
+        ];
+    }
     protected $file;
 
     public function __construct(FileService $file)
